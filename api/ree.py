@@ -23,14 +23,14 @@ def remove_bom(text):
     return text
 
 def content_to_pandas(content: list):
-    # with open("/home/soorajgeo/myapp/data/tmp.csv", "w") as csv_file:
+    
     with open(tmp_data_path, "w") as csv_file:
         writer = csv.writer(csv_file, delimiter = ',')
-        # cleaned = clean(content)
+        
         for i in content:
             writer.writerow(re.split(',',i))
         
-        # return pd.read_csv(tmp_data_path)
+        
 
 
 def get_mineral(us_df,row,min):
@@ -98,7 +98,7 @@ def main():
             user_df.fillna(0, inplace=True)
             
             concatenated_df = pd.read_csv(data_abs_path)
-            # concatenated_df = pd.read_csv("static/REE_data.csv")
+            
             ree_df = concatenated_df.copy()
             concatenated_df = concatenated_df.drop(columns='Minerals')
             
@@ -163,13 +163,13 @@ def main():
 
     put_datatable(user_dict, onselect=lambda row_id: put_table([[span('Compositions of similar minerals from webmineral database for point {}'.format(user_df.iloc[row_id,0]),col=3)],[get_mineral(user_df,row_id,1),get_mineral(user_df,row_id,2), get_mineral(user_df,row_id,3)],[get_data(ree_df,user_df,row_id,1),get_data(ree_df,user_df,row_id,2),get_data(ree_df,user_df,row_id,3)]]))
 
-    # put_button('Download', onclick=lambda:user_df.to_csv("/home/soorajgeo/myapp/data/Result.csv", index=False))
+    
     put_button('Download', onclick=lambda:user_df.to_csv("Result.csv", index=False))  
         
 
 app.add_url_rule('/', 'webio_view', webio_view(main),
-            methods=['GET', 'POST', 'OPTIONS'])  # need GET,POST and OPTIONS methods
+            methods=['GET', 'POST', 'OPTIONS'])  
 
-# app.run(host='localhost', port=8080)
+
 if __name__ == "__main__":
     app.run(debug=False)
