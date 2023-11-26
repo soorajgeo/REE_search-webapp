@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "api/ree.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "api/ree.py"
+    }
+  ]
+}
