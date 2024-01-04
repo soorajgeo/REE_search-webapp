@@ -1,7 +1,7 @@
 import pandas as pd
 from pywebio.input import file_upload
 from pywebio.output import put_datatable, put_table, put_button, put_text, popup, put_loading
-from pywebio.session import set_env
+from pywebio.session import set_env, download
 import csv 
 import re
 import chardet
@@ -73,16 +73,19 @@ def main():
 
     
     
-    file = file_upload(label='Upload your CSV file', accept='.csv')
-    
-    with put_loading():
-        put_text("Please wait few seconds")
+    file = file_upload(label='Upload your CSV file', accept='.csv', required=True)
 
+    
+           
+    with put_loading():
+        
+           
         raw_data = file['content']
             
         # Detect the encoding of the file content
         result = chardet.detect(raw_data)
         encoding = result['encoding']
+        put_text("Please wait few seconds")
 
         try:
             # Decode the file content using the detected encoding and remove BOM if present
@@ -91,6 +94,7 @@ def main():
             
             content_to_pandas(lines)
             user_df = pd.read_csv(tmp_data_path)
+            os.remove(tmp_data_path)
             
             
             points = user_df.iloc[:,0]
