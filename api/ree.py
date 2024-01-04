@@ -1,7 +1,7 @@
 import pandas as pd
 from pywebio.input import file_upload
 from pywebio.output import put_datatable, put_table, put_button, put_text, popup, put_loading
-from pywebio.session import set_env, download
+from pywebio.session import set_env
 import csv 
 import re
 import chardet
