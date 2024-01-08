@@ -19,7 +19,7 @@ The application uses simple vector algebra method known as cosine similarity (ht
 
 
 ## Demo
-[]![REE_web_app](https://github.com/soorajgeo/REE_search-webapp/assets/51475605/01b9e1a7-d235-4db4-aab6-0c6b6ae02896)
+![REE_web_app](https://github.com/soorajgeo/REE_search-webapp/assets/51475605/01b9e1a7-d235-4db4-aab6-0c6b6ae02896)
 
 
 
